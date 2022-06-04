@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">applicationId</string>
+    <string name="app_name">NMedia!</string>
     <string name="nmedia">NMedia!</string>
+    <string name="avatar_description2">Avatar firm</string>
+    <string name="Name_univer">Netologia.University of Internet Professions</string>
+    <string name="date_post">18 May 2022</string>
+    <string name="likes_sum">15</string>
 </resources>

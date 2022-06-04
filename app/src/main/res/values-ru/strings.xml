@@ -3,4 +3,7 @@
 <resources>
     <string name="app_name">НМедиа</string>
     <string name="nmedia">НМедиа!</string>
+    <string name="avatar_description2">Аватар организации</string>
+    <string name="Name_univer">Нетология.Университет интернет профессий</string>
+    <string name="date_post">18 Мая 2022</string>
 </resources>
