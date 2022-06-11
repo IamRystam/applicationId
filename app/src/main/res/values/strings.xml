@@ -4,5 +4,5 @@
     <string name="avatar_description2">Avatar firm</string>
     <string name="Name_univer">Нетология.Университет интернет профессий</string>
     <string name="date_post">18 Мая 2022</string>
-    <string name="likes_sum">15</string>
+    <string name="likes_sum" translatable="false">15</string>
 </resources>
