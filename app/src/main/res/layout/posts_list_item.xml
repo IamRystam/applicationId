@@ -13,7 +13,7 @@
         android:contentDescription="@string/avatar_description2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/ic_netology" />
 
     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/name"
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_baseline_more_vert_24"
+        android:src="@drawable/ic_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_baseline_favorite_border_24"
+        android:src="@drawable/ic_like_24"
         app:layout_constraintEnd_toStartOf="@id/likesSum"
         app:layout_constraintStart_toStartOf="@id/imageView2"
         app:layout_constraintTop_toBottomOf="@id/text1" />
@@ -95,7 +95,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="32dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_baseline_share_24"
+        android:src="@drawable/ic_share_24"
         app:layout_constraintStart_toEndOf="@id/likesSum"
         app:layout_constraintTop_toBottomOf="@id/text1" />
 
@@ -116,7 +116,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_baseline_remove_red_eye_24"
+        android:src="@drawable/ic_eye_24"
         app:layout_constraintEnd_toStartOf="@id/eyesSum"
         app:layout_constraintTop_toTopOf="@id/likes" />
 
