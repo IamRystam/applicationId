@@ -30,18 +30,14 @@ class MainActivity : AppCompatActivity() {
             binding.likes.setImageResource(imageResId)
             post.likeCount = if (imageResId == R.drawable.ic_like_24) 0 else post.likeCount + 1
             var count = binding.likesSum
-            var countFormat = post.likeCount
-            count.text = formatNumber(countFormat)
+            count.text = formatNumber(post.likeCount)
 
         }
-
-
-
 
         binding.share.setOnClickListener {
             post.shareCount = post.shareCount + 1
             var count = binding.shareSum
-            count.text = post.shareCount.toString()
+            count.text =formatNumber(post.shareCount)
         }
 
 
