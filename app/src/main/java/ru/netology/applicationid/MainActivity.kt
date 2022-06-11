@@ -29,16 +29,17 @@ class MainActivity : AppCompatActivity() {
             val imageResId = if (post.LikedByMe) R.drawable.ic_like_24 else R.drawable.ic_liked_24
             binding.likes.setImageResource(imageResId)
             post.likeCount = if (imageResId == R.drawable.ic_like_24) 0 else post.likeCount + 1
-            var count = binding.likesSum
+            val count = binding.likesSum
             count.text = formatNumber(post.likeCount)
 
         }
 
         binding.share.setOnClickListener {
             post.shareCount = post.shareCount + 1
-            var count = binding.shareSum
+            val count = binding.shareSum
             count.text =formatNumber(post.shareCount)
         }
+
 
 
     }
