@@ -10,7 +10,7 @@ import java.math.RoundingMode
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -24,11 +24,14 @@ class MainActivity : AppCompatActivity() {
             likeCount = 0
 
         )
+
+        binding.render(post)
         binding.likes.setOnClickListener {
+            println("Like1")
             post.LikedByMe = !post.LikedByMe
-            val imageResId = if (post.LikedByMe) R.drawable.ic_like_24 else R.drawable.ic_liked_24
-            binding.likes.setImageResource(imageResId)
-            post.likeCount = if (imageResId == R.drawable.ic_like_24) 0 else post.likeCount + 1
+            binding.likes.setImageResource(getLikeIconResId(post.LikedByMe))
+            post.likeCount =
+                if (getLikeIconResId(post.LikedByMe) == R.drawable.ic_like_24) 0 else post.likeCount + 1
             val count = binding.likesSum
             count.text = formatNumber(post.likeCount)
 
@@ -37,12 +40,30 @@ class MainActivity : AppCompatActivity() {
         binding.share.setOnClickListener {
             post.shareCount = post.shareCount + 1
             val count = binding.shareSum
-            count.text =formatNumber(post.shareCount)
+            count.text = formatNumber(post.shareCount)
+        }
+        binding.root.setOnClickListener{
+           println("Root")
+
+            binding.imageView2. setOnClickListener{
+                println("аватар")
+            }
         }
 
+    }
+
+    private fun ActivityMainBinding.render(post: Post) {
+        author.text = post.author
+        published.text = post.published
+        content.text = post.content
+        likes.setImageResource(getLikeIconResId(post.LikedByMe))
 
 
     }
+
+    private fun getLikeIconResId(liked: Boolean) =
+        if (liked) R.drawable.ic_like_24 else R.drawable.ic_liked_24
+
 
     private fun formatNumber(count: Int): String {
 
@@ -83,8 +104,8 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-}
 
+}
 
 
 
