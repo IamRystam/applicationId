@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
                 if (post.LikedByMe) {
                     post.likeCount + 1
-                    likesSum.text = formatNumber(post.likeCount )
+                    likesSum.text = formatNumber(post.likeCount + 1 )
                 } else {
                     post.likeCount - 1
                     likesSum.text = formatNumber(post.likeCount)
