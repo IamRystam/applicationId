@@ -3,7 +3,6 @@ package ru.netology.applicationid.data.impl
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.netology.applicationid.Post
-import ru.netology.applicationid.R
 import ru.netology.applicationid.data.PostRepository
 
 class InMemoryPostRepository : PostRepository {
@@ -25,13 +24,13 @@ class InMemoryPostRepository : PostRepository {
     override fun get(): LiveData<Post> = data
 
 
-
     override fun like() {
         post = post.copy(LikedByMe = !post.LikedByMe)
         data.value = post
     }
+
     override fun share() {
-        post = post.copy(shareCount = post.shareCount+1)
+        post = post.copy(shareCount = post.shareCount + 1)
         data.value = post
     }
 }
