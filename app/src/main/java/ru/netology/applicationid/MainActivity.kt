@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun formatNumber(count: Int): String {
+    private fun formatNumber(count: Int): String {
 
         return when (count) {
             in 0..999 -> {
