@@ -4,10 +4,13 @@ package ru.netology.applicationid
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.applicationid.databinding.ActivityMainBinding
+import ru.netology.applicationid.viewModel.PostViewModel
 import java.math.BigDecimal
 import java.math.RoundingMode
+import androidx.activity.viewModels
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -15,57 +18,48 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(
-            id = 0L,
-            author = "Rustam",
-            content = "Events",
-            published = "08.06.22",
-            shareCount = 0,
-            likeCount = 0
 
-        )
+        val viewModel: PostViewModel by viewModels()
+        viewModel.data.observe(this) { post ->
 
-        binding.render(post)
-        binding.likes.setOnClickListener {
-            println("Like1")
-            post.LikedByMe = !post.LikedByMe
-            binding.likes.setImageResource(getLikeIconResId(post.LikedByMe))
-            post.likeCount =
-                if (getLikeIconResId(post.LikedByMe) == R.drawable.ic_like_24) 0 else post.likeCount + 1
-            val count = binding.likesSum
-            count.text = formatNumber(post.likeCount)
+            with(binding) {
 
-        }
+                author.text = post.author
+                published.text = post.published
+                content.text = post.content
+                likes.setImageResource(if (post.LikedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24)
+                shareSum.text = formatNumber(post.shareCount )
 
-        binding.share.setOnClickListener {
-            post.shareCount = post.shareCount + 1
-            val count = binding.shareSum
-            count.text = formatNumber(post.shareCount)
-        }
-        binding.root.setOnClickListener{
-           println("Root")
+                likesSum.text = formatNumber(post.likeCount)
 
-            binding.imageView2. setOnClickListener{
-                println("аватар")
+                if (post.LikedByMe) {
+                    post.likeCount + 1
+                    likesSum.text = formatNumber(post.likeCount +1)
+                } else {
+                    post.likeCount - 1
+                    likesSum.text = formatNumber(post.likeCount)
+                }
             }
+
         }
 
+        binding.likes.setOnClickListener {
+            viewModel.onLikeClicked()
+
+
+            binding.share.setOnClickListener {
+                viewModel.onShareCount()
+
+
+            }
+
+        }
+
+
     }
 
-    private fun ActivityMainBinding.render(post: Post) {
-        author.text = post.author
-        published.text = post.published
-        content.text = post.content
-        likes.setImageResource(getLikeIconResId(post.LikedByMe))
 
-
-    }
-
-    private fun getLikeIconResId(liked: Boolean) =
-        if (liked) R.drawable.ic_like_24 else R.drawable.ic_liked_24
-
-
-    private fun formatNumber(count: Int): String {
+    fun formatNumber(count: Int): String {
 
         return when (count) {
             in 0..999 -> {
