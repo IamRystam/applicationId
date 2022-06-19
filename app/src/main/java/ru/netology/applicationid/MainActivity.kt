@@ -27,18 +27,12 @@ class MainActivity : AppCompatActivity() {
                 author.text = post.author
                 published.text = post.published
                 content.text = post.content
-                likes.setImageResource(if (post.LikedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24)
-                shareSum.text = formatNumber(post.shareCount )
+                likes.setImageResource(if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24)
+                shareSum.text = formatNumber(post.shareCount)
 
                 likesSum.text = formatNumber(post.likeCount)
 
-                if (post.LikedByMe) {
-                    post.likeCount + 1
-                    likesSum.text = formatNumber(post.likeCount + 1 )
-                } else {
-                    post.likeCount - 1
-                    likesSum.text = formatNumber(post.likeCount)
-                }
+
             }
 
         }
@@ -47,59 +41,59 @@ class MainActivity : AppCompatActivity() {
             viewModel.onLikeClicked()
 
 
-            binding.share.setOnClickListener {
-                viewModel.onShareCount()
-
-
-            }
-
+        }
+        binding.share.setOnClickListener {
+            viewModel.onShareCount()
         }
 
 
     }
 
-
-    private fun formatNumber(count: Int): String {
-
-        return when (count) {
-            in 0..999 -> {
-                return count.toString()
-            }
-            in 1000..1099 -> {
-                return (count / 1000).toString() + "K"
-            }
-            in 1100..9999 -> {
-                return BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
-                    .toString() + "K"
-            }
-            in 10000..10099 -> {
-                return (count / 1000).toString() + "K"
-            }
-            in 10100..99999 -> {
-                BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
-                    .toString() + "K"
-            }
-            in 100000..100999 -> {
-                return (count / 1000).toString() + "K"
-            }
-            in 110000..999999 -> {
-                return BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
-                    .toString() + "K"
-            }
-            in 1000000..1099999 -> {
-                return (count / 1000000).toString() + "M"
-            }
-            in 1100000..9999999 -> {
-                return BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
-                    .toString() + "M"
-            }
-            else -> "error"
-        }
-
-
-    }
 
 }
+
+
+private fun formatNumber(count: Int): String {
+
+    return when (count) {
+        in 0..999 -> {
+            return count.toString()
+        }
+        in 1000..1099 -> {
+            return (count / 1000).toString() + "K"
+        }
+        in 1100..9999 -> {
+            return BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
+                .toString() + "K"
+        }
+        in 10000..10099 -> {
+            return (count / 1000).toString() + "K"
+        }
+        in 10100..99999 -> {
+            BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
+                .toString() + "K"
+        }
+        in 100000..100999 -> {
+            return (count / 1000).toString() + "K"
+        }
+        in 110000..999999 -> {
+            return BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
+                .toString() + "K"
+        }
+        in 1000000..1099999 -> {
+            return (count / 1000000).toString() + "M"
+        }
+        in 1100000..9999999 -> {
+            return BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
+                .toString() + "M"
+        }
+        else -> "error"
+    }
+
+
+}
+
+
 
 
 

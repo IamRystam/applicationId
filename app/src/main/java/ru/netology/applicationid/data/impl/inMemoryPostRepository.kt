@@ -15,7 +15,7 @@ class InMemoryPostRepository : PostRepository {
         published = "08.06.22",
         shareCount = 0,
         likeCount = 0,
-        LikedByMe = false
+        likedByMe = false
 
     )
 
@@ -25,9 +25,15 @@ class InMemoryPostRepository : PostRepository {
 
 
     override fun like() {
-        post = post.copy(LikedByMe = !post.LikedByMe)
+        post = post.copy(
+            likedByMe = !post.likedByMe,
+            likeCount = post.likeCount + if (!post.likedByMe) +1 else -1
+        )
+
         data.value = post
+
     }
+
 
     override fun share() {
         post = post.copy(shareCount = post.shareCount + 1)
