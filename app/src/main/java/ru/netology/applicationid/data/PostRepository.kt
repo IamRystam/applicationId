@@ -5,11 +5,11 @@ import ru.netology.applicationid.Post
 
 interface PostRepository {
 
-    fun get(): LiveData<Post>
+    val data: LiveData<List<Post>>
 
-    fun like()
+    fun like(postId: Long)
 
-    fun share()
+    fun share(postId: Long)
 
 
 }

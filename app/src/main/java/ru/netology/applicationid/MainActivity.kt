@@ -8,6 +8,8 @@ import ru.netology.applicationid.viewModel.PostViewModel
 import java.math.BigDecimal
 import java.math.RoundingMode
 import androidx.activity.viewModels
+import ru.netology.applicationid.adapter.PostsAdapter
+import ru.netology.applicationid.databinding.PostsListItemBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,30 +22,20 @@ class MainActivity : AppCompatActivity() {
 
 
         val viewModel: PostViewModel by viewModels()
-        viewModel.data.observe(this) { post ->
+        viewModel.data.observe(this) { posts ->
+            val adapter = PostsAdapter(posts,
+                onLikeClicked = { post ->
+                    viewModel.onLikeClicked(post)
 
-            with(binding) {
+                },
+                onShareClicked = { post ->
+                    viewModel.onShareCount(post)
+                }
 
-                author.text = post.author
-                published.text = post.published
-                content.text = post.content
-                likes.setImageResource(if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24)
-                shareSum.text = formatNumber(post.shareCount)
-
-                likesSum.text = formatNumber(post.likeCount)
-
-
-            }
-
-        }
-
-        binding.likes.setOnClickListener {
-            viewModel.onLikeClicked()
+            )
+            binding.postsRecyclerView.adapter = adapter
 
 
-        }
-        binding.share.setOnClickListener {
-            viewModel.onShareCount()
         }
 
 
@@ -53,45 +45,14 @@ class MainActivity : AppCompatActivity() {
 }
 
 
-private fun formatNumber(count: Int): String {
-
-    return when (count) {
-        in 0..999 -> {
-            return count.toString()
-        }
-        in 1000..1099 -> {
-            return (count / 1000).toString() + "K"
-        }
-        in 1100..9999 -> {
-            return BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
-                .toString() + "K"
-        }
-        in 10000..10099 -> {
-            return (count / 1000).toString() + "K"
-        }
-        in 10100..99999 -> {
-            BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
-                .toString() + "K"
-        }
-        in 100000..100999 -> {
-            return (count / 1000).toString() + "K"
-        }
-        in 110000..999999 -> {
-            return BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
-                .toString() + "K"
-        }
-        in 1000000..1099999 -> {
-            return (count / 1000000).toString() + "M"
-        }
-        in 1100000..9999999 -> {
-            return BigDecimal(count / 1000.0).setScale(1, RoundingMode.HALF_EVEN)
-                .toString() + "M"
-        }
-        else -> "error"
-    }
 
 
-}
+
+
+
+
+
+
 
 
 
