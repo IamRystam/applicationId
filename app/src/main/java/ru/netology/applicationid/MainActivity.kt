@@ -22,18 +22,20 @@ class MainActivity : AppCompatActivity() {
 
 
         val viewModel: PostViewModel by viewModels()
+        val adapter = PostsAdapter(
+            onLikeClicked = { post ->
+                viewModel.onLikeClicked(post)
+
+            },
+            onShareClicked = { post ->
+                viewModel.onShareCount(post)
+            }
+
+
+        )
+        binding.postsRecyclerView.adapter = adapter
         viewModel.data.observe(this) { posts ->
-            val adapter = PostsAdapter(posts,
-                onLikeClicked = { post ->
-                    viewModel.onLikeClicked(post)
-
-                },
-                onShareClicked = { post ->
-                    viewModel.onShareCount(post)
-                }
-
-            )
-            binding.postsRecyclerView.adapter = adapter
+            adapter.submitList(posts)
 
 
         }

@@ -2,6 +2,8 @@ package ru.netology.applicationid.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.applicationid.Post
 import ru.netology.applicationid.R
@@ -10,10 +12,11 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 
 class PostsAdapter(
-    private val posts: List<Post>,
+
     private val onLikeClicked: (Post) -> Unit,
     private val onShareClicked: (Post) -> Unit
-) : RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
+) : ListAdapter<Post,PostsAdapter.ViewHolder>(DiffCallback) {
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,17 +26,18 @@ class PostsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val post = posts[position]
+        val post = getItem(position)
         holder.bind(post)
     }
 
-    override fun getItemCount(): Int = posts.size
 
     class ViewHolder(
         private val binding: PostsListItemBinding,
         private val onLikeClicked: (Post) -> Unit,
         private val onShareClicked: (Post) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
+
+
 
 
         fun bind(post: Post) = with(binding) {
@@ -56,6 +60,7 @@ class PostsAdapter(
 
 
         }
+
 
         private fun formatNumber(count: Int): String {
 
@@ -95,6 +100,17 @@ class PostsAdapter(
             }
 
         }
+
+    }
+    private object DiffCallback:DiffUtil.ItemCallback<Post>(){
+
+        override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean =
+            oldItem.id==newItem.id
+
+
+        override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean =
+            oldItem==newItem
+
 
     }
 }
