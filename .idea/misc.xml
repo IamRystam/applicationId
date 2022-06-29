@@ -8,12 +8,16 @@
         <entry key="..\:/Android/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.3605" />
         <entry key="..\:/Android/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.3605" />
         <entry key="..\:/Android/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.3605" />
+        <entry key="..\:/Android/app/src/main/res/drawable/ic_close_48.xml" value="0.1635" />
+        <entry key="..\:/Android/app/src/main/res/drawable/ic_edit_24.xml" value="0.183" />
         <entry key="..\:/Android/app/src/main/res/drawable/ic_heart.xml" value="0.206" />
         <entry key="..\:/Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1115" />
         <entry key="..\:/Android/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1115" />
         <entry key="..\:/Android/app/src/main/res/drawable/ic_netology.xml" value="0.1435" />
+        <entry key="..\:/Android/app/src/main/res/drawable/ic_save_48.xml" value="0.1635" />
         <entry key="..\:/Android/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Android/app/src/main/res/layout/posts_list_item.xml" value="0.33" />
+        <entry key="..\:/Android/app/src/main/res/menu/options_post.xml" value="0.359375" />
       </map>
     </option>
   </component>

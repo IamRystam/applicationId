@@ -5,4 +5,10 @@
     <string name="Name_univer">Нетология.Университет интернет профессий</string>
     <string name="date_post">18 Мая 2022</string>
     <string name="likes_sum" translatable="false">15</string>
+    <string name="remove">Remove</string>
+    <string name="menu_edit">Edit</string>
+    <string name="post_text">Post text</string>
+    <string name="description_post_save">Save...</string>
+    <string name="edit_message">Edit message</string>
+    <string name="description_edit_cancel">Cancel</string>
 </resources>
