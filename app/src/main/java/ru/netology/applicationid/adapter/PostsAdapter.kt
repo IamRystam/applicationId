@@ -65,6 +65,9 @@ class PostsAdapter(
             binding.share.setOnClickListener {
                 listener.onShareClicked(post)
             }
+            binding.menu.setOnClickListener {
+                popupMenu.show()
+            }
         }
 
 
@@ -79,11 +82,13 @@ class PostsAdapter(
                 author.text = post.author
                 published.text = post.published
                 content.text = post.content
-                likes.setImageResource(if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24)
-                shareSum.text = formatNumber(post.shareCount)
+                likes.isChecked = post.likedByMe
+                // likes.setButtonDrawable(if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24)
+                likes.text = formatNumber(post.likeCount)
+                share.text = formatNumber(post.shareCount)
 
-                likesSum.text = formatNumber(post.likeCount)
-                menu.setOnClickListener { popupMenu.show() }
+                //likesSum.text = formatNumber(post.likeCount)
+                //  menu.setOnClickListener { popupMenu.show()                }
 
 
                 /*  likes.setOnClickListener {
