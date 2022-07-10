@@ -6,13 +6,22 @@ import ru.netology.applicationid.Post
 import ru.netology.applicationid.adapter.PostInteractionListener
 import ru.netology.applicationid.data.PostRepository
 import ru.netology.applicationid.data.impl.InMemoryPostRepository
+import ru.netology.applicationid.util.SingleLiveEvent
 
 class PostViewModel : ViewModel(), PostInteractionListener {
     private val repository: PostRepository = InMemoryPostRepository()
 
     val data get() = repository.data
 
+    val sharePostContent = SingleLiveEvent<String>()
+    val navigateToPostContentScreenEvent = SingleLiveEvent<Unit>()
+    val playVideoURL = SingleLiveEvent<String>()
+
     val currentPost = MutableLiveData<Post?>(null)
+
+    fun onAddClicked() {
+        navigateToPostContentScreenEvent.call()
+    }
 
     fun onButtonSaveClicked(content: String) {
         if (content.isBlank()) return
@@ -34,17 +43,24 @@ class PostViewModel : ViewModel(), PostInteractionListener {
 
     override fun onLikeClicked(post: Post) = repository.like(post.id)
 
-    override fun onShareClicked(post: Post) = repository.share(post.id)
+    override fun onShareClicked(post: Post) {
+        sharePostContent.value = post.content
+    }
+
+    override fun onButtonPlayVideoClicked(post: Post) {
+        playVideoURL.value = post.videoURL
+    }
 
     override fun onRemoveClicked(post: Post) = repository.delete(post.id)
 
     override fun onButtonEditClicked(post: Post) {
         currentPost.value = post
+        navigateToPostContentScreenEvent.call()
     }
 
-    override fun onButtonCancelClicked() {
-        currentPost.value = null
-    }
+    // override fun onButtonCancelClicked() {
+    // currentPost.value = null
+    //}
 }
 
 //fun onDeleteClicked(post: Post)= repository.delete(post.id)

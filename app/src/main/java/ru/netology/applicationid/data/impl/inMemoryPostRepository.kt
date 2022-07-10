@@ -27,7 +27,8 @@ class InMemoryPostRepository : PostRepository {
                 published = "08.06.22",
                 shareCount = 0,
                 likeCount = 0,
-                likedByMe = false
+                likedByMe = false,
+                videoURL = if (index % 3 == 0) "https://www.youtube.com/watch?v=gJt946CyJO0" else "",
             )
         }
 

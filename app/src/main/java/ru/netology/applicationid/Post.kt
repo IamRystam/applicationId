@@ -1,12 +1,13 @@
 package ru.netology.applicationid
 
-data class Post (
-    val id:Long,
-    val author:String,
-    val content:String,
-    val published:String,
-    var likedByMe:Boolean =false,
-    var shareCount:Int,
-    var likeCount:Int
-        )
+data class Post(
+    val id: Long,
+    val author: String,
+    val content: String,
+    val published: String,
+    var likedByMe: Boolean = false,
+    var shareCount: Int,
+    var likeCount: Int,
+    val videoURL: String = ""
+)
 

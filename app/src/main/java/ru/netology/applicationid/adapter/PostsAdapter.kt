@@ -1,6 +1,7 @@
 package ru.netology.applicationid.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
@@ -68,6 +69,14 @@ class PostsAdapter(
             binding.menu.setOnClickListener {
                 popupMenu.show()
             }
+            binding.buttonPlayVideo.setOnClickListener {
+                listener.onButtonPlayVideoClicked(post)
+            }
+
+            binding.videoContent.setOnClickListener {
+                listener.onButtonPlayVideoClicked(post)
+            }
+
         }
 
 
@@ -86,17 +95,19 @@ class PostsAdapter(
                 // likes.setButtonDrawable(if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24)
                 likes.text = formatNumber(post.likeCount)
                 share.text = formatNumber(post.shareCount)
+                groupVideo.visibility =
+                    if (post.videoURL.isBlank()) View.GONE else View.VISIBLE
 
                 //likesSum.text = formatNumber(post.likeCount)
                 //  menu.setOnClickListener { popupMenu.show()                }
 
 
                 /*  likes.setOnClickListener {
-               listener.onLikeClicked(post)
-              }
-              share.setOnClickListener {
-                  onShareClicked(post)
-              }*/
+           listener.onLikeClicked(post)
+          }
+          share.setOnClickListener {
+              onShareClicked(post)
+          }*/
 
             }
         }
@@ -154,4 +165,7 @@ class PostsAdapter(
 
 
     }
+
 }
+
+
