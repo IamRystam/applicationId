@@ -2,6 +2,7 @@ package ru.netology.applicationid
 
 import kotlinx.serialization.Serializable
 
+
 @Serializable
 data class Post(
     val id: Long,
