@@ -13,14 +13,13 @@ import ru.netology.applicationid.util.SingleLiveEvent
 
 class PostViewModel(
     application: Application
-) : AndroidViewModel(application),
-    PostInteractionListener {
+) : AndroidViewModel(application), PostInteractionListener {
     private val repository: PostRepository = FilePostRepository(application)
 
     val data get() = repository.data
 
     val sharePostContent = SingleLiveEvent<String>()
-    val navigateToPostContentScreenEvent = SingleLiveEvent<Unit>()
+    val navigateToPostContentScreenEvent = SingleLiveEvent<String>()
     val playVideoURL = SingleLiveEvent<String>()
 
     val currentPost = MutableLiveData<Post?>(null)
@@ -61,7 +60,7 @@ class PostViewModel(
 
     override fun onButtonEditClicked(post: Post) {
         currentPost.value = post
-        navigateToPostContentScreenEvent.call()
+        navigateToPostContentScreenEvent.value = post.content
     }
 
     // override fun onButtonCancelClicked() {

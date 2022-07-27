@@ -21,8 +21,12 @@
         <entry key="..\:/Android/app/src/main/res/drawable/ic_youtube_logo.xml" value="0.2675" />
         <entry key="..\:/Android/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Android/app/src/main/res/layout/activity_post_content.xml" value="0.29635416666666664" />
+        <entry key="..\:/Android/app/src/main/res/layout/app_activity.xml" value="0.359375" />
+        <entry key="..\:/Android/app/src/main/res/layout/feed_fragment.xml" value="0.359375" />
         <entry key="..\:/Android/app/src/main/res/layout/intent_handler_activity.xml" value="0.2953125" />
+        <entry key="..\:/Android/app/src/main/res/layout/nav_graph.xml" value="0.35833333333333334" />
         <entry key="..\:/Android/app/src/main/res/layout/post_content_activity.xml" value="0.22146739130434784" />
+        <entry key="..\:/Android/app/src/main/res/layout/post_content_fragment.xml" value="0.15443840579710144" />
         <entry key="..\:/Android/app/src/main/res/layout/posts_list_item.xml" value="0.5" />
         <entry key="..\:/Android/app/src/main/res/menu/options_post.xml" value="0.359375" />
         <entry key="..\:/Android/app/src/main/res/mipmap-anydpi-v26/ic_youtube_logo.xml" value="0.1635" />
